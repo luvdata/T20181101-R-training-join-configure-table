@@ -1,0 +1,11 @@
+"0","```r
+# Uses Magrittr and %>% pipe
+# Groups by Complex Area, creates percentage calculation in table
+
+pct_idea <- sb_1718 %>% count(TestSubj = factor(TestSubj), SPEDFlag = factor(SPEDFlag)) %>% group_by(TestSubj) %>% mutate(pct = prop.table(n) * 100)
+
+sb_1718_PL_carea <- sb_1718 %>% count(CAreaName = factor(CAreaName), PL_TOT = factor(PL_TOT)) %>% 
+group_by(CAreaName) %>% mutate(pct = prop.table(n) * 100)
+
+write.csv(sb_1718_PL_carea, file = paste(\"sb_1718_\", subj, grade, \"_carea.csv\", sep =\"\"))
+```"

@@ -1,0 +1,13 @@
+"0","```sql
+#SAMPLES:
+#adds column named SchlYr to above table, sb_1718 Default fill
+#sb_1718[\"SchlYr\"] <- \"2017-2018\"
+#combine the two dataframes above and remove originals
+#sb <- rbind(sb_1617,sb_1718)
+#rm(sb_1617,sb_1718)
+#Pivot Data using reshape
+#library(reshape)
+#TTT_by_ID <- cast(TTT, IDNO ~ Test)
+#COLUMN BIND, with titles example shows keeping title at top
+#TTT_time_convert <- cbind(IDNO=TTT_by_ID$IDNO, followed by whatever other columns you want)
+```"

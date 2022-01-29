@@ -1,0 +1,29 @@
+[File Folder] naming convention:
+yyyymmdd-[person]-[description, include testing year and databases involved if possible]
+
+T20181101-R-training-join-configure-table
+(T stands for training)
+====================================================================
+Within each folder, make a text file summary of the project, using the same folder name but preceded by BRIEF-, .e.g.
+BRIEF-20170510-br-sum-of-ca917-students.txt
+
+Include:
+		Date Started:10/23/18
+		Date Due:11/1/2018
+		Date Completed:
+		
+		Summary of project: Create 45-minute session for DGA, Accountability, Assessment regarding joining tables and switching between wide and long views
+		
+		Contacts: John D, Sherilyn, Travis S
+		
+		Recap: (brief statement of completion and lessons learned)
+====================================================================
+
+
+
+Filename: Project_process.txt
+Project files are kept in \\SAS-WINNEBAGO\Charlotte_Yee\Project
+
+
+
+					******PROJECT PROCESS******

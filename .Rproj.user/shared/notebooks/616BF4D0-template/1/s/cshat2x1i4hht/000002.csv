@@ -1,0 +1,16 @@
+"0","```sql
+
+SELECT [grade]
+      ,[test]
+      ,[test_desc]
+      ,[min]
+      ,[cut_pl2]
+      ,[cut_pl3]
+      ,[cut_pl4]
+      ,[max]
+  FROM [Assessment].[dbo].[cutscores]
+-----------------------------------------  
+-- BE SURE TO SET GRADE AND TEST BELOW --
+  WHERE [grade]='03' AND test = 'sb_m'
+-----------------------------------------   
+```"

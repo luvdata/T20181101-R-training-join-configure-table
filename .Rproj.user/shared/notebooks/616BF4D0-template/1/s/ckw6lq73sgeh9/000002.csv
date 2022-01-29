@@ -1,0 +1,26 @@
+"0","```r
+
+library(ggplus) #ggplus permits multiple page pdf print
+ 
+#Box Plot: Facet wrap by School
+
+box <- ggplot(sb, (aes(factor(SchlYr), fill = SchlYr, SS_TOT))) +
+geom_boxplot(fatten = 1.5, outlier.size = 0) +
+  
+   scale_y_continuous(name = \"Scaled Score\", breaks = c(cutscore$min, cutscore$cut_pl2, cutscore$cut_pl3, cutscore$cut_pl4), labels = c(\"\", \"Nearly Met\", \"Met\", \"Exceeds\"), limits = cutscore$min,cutscore$max) + theme(axis.text.x = element_text(angle = 30, hjust = 1)) +
+   
+   labs(title = paste(\"Grade \",gr,\" \", \"MATH -- Smarter Balanced -- School Year 2017-18\", sep =\"\"), x=\"\", y = \"Scaled Score\", caption = \"Standard Box Plot, 25%, 50%, 75%.\")
+ 
+ ##############################################
+  ## Remove comment below to print to pdf     ##
+  ##############################################
+   pdf(file = paste(\"!box_MATH\", gr, \"_school.pdf\", sep =\"\"), width=11, height =8.5)
+ 
+facet_multiple(plot = box, facets = \"Schoolname\", ncol=5, nrow =3)
+
+  #####################################################
+  ## Activate line below to release pdf device       ##
+  #####################################################
+     dev.off()
+ 
+```"

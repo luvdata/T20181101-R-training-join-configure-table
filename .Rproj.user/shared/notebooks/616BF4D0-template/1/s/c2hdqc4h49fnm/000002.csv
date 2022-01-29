@@ -1,0 +1,14 @@
+"0","```r
+library(tidyverse)
+library(DBI)
+##################################################################
+#VALUE ENTRY
+#
+#gr <- '03'   example                                                    
+##################################################################
+
+
+#DATABASES - Connect to SQL SERVER / ODBC
+con <- DBI::dbConnect(odbc::odbc(), \"AAB-SQL\", UID=\"cyee\", PWD    = rstudioapi::askForPassword(\"Database password\"))
+
+```"

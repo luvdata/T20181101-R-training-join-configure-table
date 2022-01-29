@@ -1,0 +1,81 @@
+---
+title: "Joining and reshaping data in R"
+output: html_notebook
+---
+
+
+Libraries and SELECTION
+
+I usually start off by putting the libraries I'll be using at the top, along with any manually selected items to be filtered (e.g. Math or ELA, Grade selection, etc. . .)
+```{r library}
+# NOTE: The pound sign -- that's a hashtag to you young'uns -- comments out the rest of the line
+
+library(tidyverse) # this is a selected group of additional tools I find useful 
+# tidyverse contains tidyr to reshape with one command.  other library options: reshape, reshape2
+library(DBI) # this will help you connect to your SQL server.  Comment it out for now.
+
+##################################################################
+#VALUE ENTRY
+#
+#gr <- '03'   example                                                    
+##################################################################
+```
+
+```{r DB, eval=FALSE, include=FALSE}
+#DATABASES - Connect to SQL SERVER / ODBC 
+#replace "AAB-SQL" with your server and "cyee" with your user ID.  It will prompt for pwd
+
+con <- DBI::dbConnect(odbc::odbc(), "AAB-SQL", UID="cyee", PWD    = rstudioapi::askForPassword("Database password"))
+
+```
+
+SAMPLE SQL block.  Note that I've deactivated it in the top right hand corner.  This adds additional language to the space between {}. 
+```{sql SQL CUTSCORE, eval=FALSE, connection=con, include=FALSE, output.var="cutscore"}
+
+--to import data from your SQL server to use in R, just copy your SQL code here.  Be sure to use SQL language
+
+SELECT [grade]
+      ,[cut_pl2]
+      ,[cut_pl3]
+      ,[cut_pl4]
+      ,[max]
+  FROM [Assessment].[dbo].[cutscores]
+
+```
+
+```{r}
+#We will be importing data from sample.data.xls using the RStudio Environment interface.
+#We will also copy and paste the code into our R block.
+#We will also name this block "XLS import" using RStudio "Modify Chunk Options"
+
+```
+
+```{r reshape}
+#try the command head(sample_data) to preview your dataset
+#Find the key and value columns, then create wide table using spread()
+#####################
+# Making a wide dataset using spread()
+#####################
+sample_data_wide <- spread(sample_data, TestSubj, SS_TOT)
+
+
+#####################
+# Making a long dataset using gather()
+# for this example we are returning the wide version back to the original
+#####################
+sample_data_gather <- gather(sample_data_wide, TestSubj, SS_TOT, E:M, factor_key=TRUE)
+
+# The arguments to gather():
+# - data: Data object
+# - key: Name of new key column (made from names of data columns)
+# - value: Name of new value column
+# - ...: Names of source columns that contain values
+# - factor_key: Treat the new key column as a factor (instead of character vector)
+
+```
+
+```{r join}
+
+
+```
+

@@ -1,0 +1,51 @@
+---
+title: "Joining and reshaping data in R"
+output: html_notebook
+---
+
+
+Libraries and SELECTION
+
+I usually start off by putting the libraries I'll be using at the top, along with any manually selected items to be filtered (e.g. Math or ELA, Grade selection, etc. . .)
+```{r library}
+# NOTE: The pound sign -- that's a hashtag to you young'uns -- comments out the rest of the line
+
+library(tidyverse) # this is a selected group of additional tools I find useful 
+library(reshape) # switch between long and wide with one command.  other options: reshape2, tidyr
+library(DBI) # this will help you connect to your SQL server
+
+##################################################################
+#VALUE ENTRY
+#
+#gr <- '03'   example                                                    
+##################################################################
+```
+
+```{r DB}
+#DATABASES - Connect to SQL SERVER / ODBC 
+#replace "AAB-SQL" with your server and "cyee" with your user ID.  It will prompt for pwd
+
+con <- DBI::dbConnect(odbc::odbc(), "AAB-SQL", UID="cyee", PWD    = rstudioapi::askForPassword("Database password"))
+
+```
+
+SAMPLE SQL block.  Note that I've deactivated it in the top right hand corner.  This adds additional language to the space between {}. 
+```{sql SQL CUTSCORE, eval=FALSE, connection=con, include=FALSE, output.var="cutscore"}
+
+--to import data and use in R, just copy your SQL code here.  Be sure to use SQL language
+
+SELECT [grade]
+      ,[test]
+      ,[test_desc]
+      ,[min]
+      ,[cut_pl2]
+      ,[cut_pl3]
+      ,[cut_pl4]
+      ,[max]
+  FROM [Assessment].[dbo].[cutscores]
+-----------------------------------------  
+-- BE SURE TO SET GRADE AND TEST BELOW --
+  WHERE [grade]='03' AND [test] = 'sb_m'
+-----------------------------------------   
+```
+

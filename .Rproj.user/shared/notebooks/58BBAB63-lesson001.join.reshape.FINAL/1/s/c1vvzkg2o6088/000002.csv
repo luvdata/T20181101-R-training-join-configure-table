@@ -1,0 +1,3 @@
+"0","#DATABASES - Connect to SQL SERVER / ODBC "
+"0","#replace ""AAB-SQL"" with your server and ""cyee"" with your user ID.  It will prompt for pwd"
+"0","con <- DBI::dbConnect(odbc::odbc(), ""AAB-SQL"", UID=""cyee"", PWD    = rstudioapi::askForPassword(""Database password""))"

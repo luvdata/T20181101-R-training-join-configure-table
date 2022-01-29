@@ -1,0 +1,6 @@
+"0","```r
+#BAR CHARTS
+#HIDOE by Performance Level 
+sb <- filter(sb,TestGrd == gr )
+ggplot(sb, aes(x=PL_TOT)) + geom_bar() + geom_text(stat='count', aes(label=..count..), vjust = 2, color=\"white\")
+```"
